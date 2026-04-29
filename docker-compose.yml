@@ -1,0 +1,31 @@
+services:
+  comfyui:
+    image: comfyui-rocm57:latest
+    container_name: comfyui-rocm57
+    restart: unless-stopped
+    ports:
+      - "8188:8188"
+    devices:
+      - /dev/kfd
+      # Radeon VII の render node。単独 GPU 環境なら通常 renderD128。
+      # 複数 GPU 環境では renderD129 等にずれる可能性があるため、
+      # `ls -l /dev/dri/by-path/` で実際の番号を確認して書き換えること。
+      - /dev/dri/renderD128
+    group_add:
+      - video
+      - render
+    security_opt:
+      - seccomp=unconfined
+    ipc: host
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      HSA_OVERRIDE_GFX_VERSION: "9.0.6"
+      PYTORCH_ROCM_ARCH: "gfx906"
+    volumes:
+      - ./models:/workspace/ComfyUI/models
+      - ./output:/workspace/ComfyUI/output
+      - ./custom_nodes:/workspace/ComfyUI/custom_nodes
+      - ./user:/workspace/ComfyUI/user
+      - ./input:/workspace/ComfyUI/input
+    shm_size: 8gb

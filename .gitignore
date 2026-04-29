@@ -1,0 +1,34 @@
+# 個人マニフェスト（example のみリポジトリ追跡）
+scripts/models.txt
+
+# ローカル運用ファイル
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 動作中の生成物（本来 ~/comfyui-data/ 側、リポジトリには本来入らないが念のため）
+output/
+models/checkpoints/*.safetensors
+models/loras/*.safetensors
+models/vae/*.safetensors
+models/controlnet/*.safetensors
+custom_nodes/*/
+
+# Civitai トークンなど秘匿情報
+.env
+.env.local

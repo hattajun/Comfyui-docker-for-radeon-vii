@@ -1,0 +1,26 @@
+# Civitai モデルのバッチダウンロード用マニフェスト
+# 1 行 1 URL（# はコメント）
+# 使い方:
+#   ./civitai_download.py --manifest models.txt
+#
+# モデルページ URL の例:
+#   https://civitai.com/models/12345
+#   https://civitai.com/models/12345?modelVersionId=67890   ← 特定バージョンを固定
+#   67890                                                    ← versionId 直接指定
+
+# ---- Checkpoint ----
+# Juggernaut XL（写実系の定番）
+# https://civitai.com/models/133005
+
+# DreamShaper XL（万能・絵本〜写実）
+# https://civitai.com/models/112902
+
+# Animagine XL（アニメ・イラスト）
+# https://civitai.com/models/260267
+
+# ---- LoRA ----
+# 例: お気に入り LoRA を追加
+# https://civitai.com/models/.../
+
+# ---- VAE / ControlNet / その他 ----
+# 自動的に適切なディレクトリに振り分けられる
