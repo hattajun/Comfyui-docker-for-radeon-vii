@@ -371,6 +371,10 @@ newgrp docker                  # 新シェルで反映
 - ComfyUI の起動引数に `--use-split-cross-attention` を追加すると古い AMD で安定する場合あり
 - VAE のメモリエラーなら `--bf16-vae` か `--cpu-vae`
 
+### ComfyUI-Manager で `This action is not allowed with this security level configuration.`
+
+カスタムノードのインストール時にこのエラーが出る場合、ComfyUI-Manager が（v0.3.60 pin の本構成で）`security_level` を強制的に `strong` に上書きしているのが原因。`config.ini` の編集に加えて Manager 側にもパッチが必要。詳細と手順は [comfyui-manager-security-level-fix.md](comfyui-manager-security-level-fix.md) を参照。
+
 ## 参考リンク
 
 - [ComfyUI 公式](https://github.com/comfyanonymous/ComfyUI)
